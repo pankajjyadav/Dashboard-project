@@ -1,0 +1,8 @@
+ JSON Response:
+{
+    "total": 214,
+    "registered": 24,
+    "active": 136,
+    "inactive": 54,
+    "year": 2023
+}

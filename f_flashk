@@ -1,0 +1,75 @@
+from flask import Flask, jsonify
+
+app = Flask(_name_)
+
+# Data for dashboard (this would typically come from a database)
+dashboard_data = {
+    "children_overview": {
+        "total": 214,
+        "registered": 24,
+        "active": 136,
+        "inactive": 54,
+        "year": 2023
+    },
+    "caregiver_overview": {
+        "total": 189,
+        "registered": 32,
+        "active": 149,
+        "inactive": 8,
+        "year": 2023
+    },
+    "financial_overview": {
+        "total_revenue": 2584,
+        "profit_margin": "32%",
+        "income": 1879,
+        "expenses": 348,
+        "time_frame": "Last 30 days"
+    },
+    "attendance": {
+        "total": 1564,
+        "on_time": 1167,
+        "late": 397,
+        "take_day_off": 14,
+        "not_present": 74,
+        "year": 2023,
+        "target": 2000,
+        "percentage_increase": "10% more than last week"
+    },
+    "enrollments_record": {
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+        "new_enrolls": [5, 10, 15, 20, 25, 30, 40, 24, 10, 5],
+        "year": 2023
+    }
+}
+
+@app.route('/')
+def index():
+    return "Welcome to the Dashboard Backend API"
+
+# Children Overview API
+@app.route('/api/children_overview')
+def children_overview():
+    return jsonify(dashboard_data["children_overview"])
+
+# Caregiver Overview API
+@app.route('/api/caregiver_overview')
+def caregiver_overview():
+    return jsonify(dashboard_data["caregiver_overview"])
+
+# Financial Overview API
+@app.route('/api/financial_overview')
+def financial_overview():
+    return jsonify(dashboard_data["financial_overview"])
+
+# Attendance Overview API
+@app.route('/api/attendance')
+def attendance():
+    return jsonify(dashboard_data["attendance"])
+
+# Enrollments Record API
+@app.route('/api/enrollments_record')
+def enrollments_record():
+    return jsonify(dashboard_data["enrollments_record"])
+
+if _name_ == '_main_':
+    app.run(debug=True)
